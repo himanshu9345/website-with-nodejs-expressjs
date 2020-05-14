@@ -6,17 +6,17 @@ const app = express();
 
 const port = 3000;
 
-//middleware 
-app.use(express.static(path.join(__dirname,'./static')));
+// middleware
+app.use(express.static(path.join(__dirname, './static')));
 
-app.get('/', (request, response) =>{
-    response.sendFile(path.join(__dirname,'./static/index.html'));
+app.get('/', (request, response) => {
+  response.sendFile(path.join(__dirname, './static/index.html'));
 });
 
-app.get('/speakers', (request, response) =>{
-    response.sendFile(path.join(__dirname,'./static/speakers.html'));
+app.get('/speakers', (request, response) => {
+  response.sendFile(path.join(__dirname, './static/speakers.html'));
 });
 
-app.listen(port,() =>{
-    console.log(`Express server listener on port ${port}`)
-})
+app.listen(port, () => {
+  console.log(`Express server listener on port ${port}`);
+});
