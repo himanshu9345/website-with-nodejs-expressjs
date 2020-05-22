@@ -1,0 +1,10 @@
+__The express request lifecycle__
+
+App Init, start all middleware and routes
+app.use(), app.get("/")
+
+If some request come to express with some url
+app will all the middleware in order and each middleware
+pass control to other by call next() in callback.
+If any path matches the that middleware get exexuted.
+
