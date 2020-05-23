@@ -1,0 +1,20 @@
+<html>
+  <title> </title>
+  <body>
+    <div id="root">
+      <button id="auth-button">Login</button>
+    </div>
+  </body>
+  <script>
+    function onSignInButtonClick() {
+      // Open the Auth flow in a popup.
+      window.open('/linkedin/redirect', 'firebaseAuth', 'height=315,width=400');
+    }
+
+    var button = document.getElementById('auth-button');
+
+    button.addEventListener('click', function () {
+      onSignInButtonClick();
+    });
+  </script>
+</html>
