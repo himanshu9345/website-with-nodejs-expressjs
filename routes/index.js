@@ -1,20 +1,26 @@
 const express = require('express');
 // const path = require('path');
 
-const jobsRoute = require('./jobs');
-const linkedInRequestRoute = require('./linkedin');
+const speakersRoute = require('./speakers');
+const feedbackRoute = require('./feedback');
+
+// const jobsRoute = require('./jobs');
+// const linkedInRequestRoute = require('./linkedin');
 
 // used express router
 const router = express.Router();
 
-module.exports = () => {
+module.exports = (params) => {
   router.get('/', (request, response) => {
     response.render('pages/index', { pageTitle: 'Welcome' });
   });
 
-  router.use('/jobs', jobsRoute());
+  router.use('/speakers', speakersRoute(params));
+  router.use('/feedback', feedbackRoute(params));
 
-  router.use('/linkedin', linkedInRequestRoute());
+  // router.use('/jobs', jobsRoute());
+
+  // router.use('/linkedin', linkedInRequestRoute());
 
   return router;
 };

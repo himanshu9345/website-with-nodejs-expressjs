@@ -1,6 +1,12 @@
 const express = require('express');
 const path = require('path');
 
+const FeedbackService = require('./services/FeedbackService');
+const SpeakersService = require('./services/SpeakerService');
+// Services intialized by passsing data source
+const feedbackService = new FeedbackService('./data/feedback.json');
+const speakersService = new SpeakersService('./data/speakers.json');
+
 const routes = require('./routes');
 
 const app = express();
@@ -13,7 +19,14 @@ app.set('views', path.join(__dirname, './views'));
 // middleware
 app.use(express.static(path.join(__dirname, './static')));
 
-app.use('/', routes());
+// passing services as argument
+app.use(
+  '/',
+  routes({
+    feedbackService,
+    speakersService,
+  })
+);
 
 app.listen(port, () => {
   console.log(`Express server listener on port ${port}`);
