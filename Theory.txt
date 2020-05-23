@@ -8,3 +8,6 @@ app will all the middleware in order and each middleware
 pass control to other by call next() in callback.
 If any path matches the that middleware get exexuted.
 
+HTTP is stateless protocol,
+to persist user data from request to request we need sessions.
+Cookie session is used to maintain session in this node application.
