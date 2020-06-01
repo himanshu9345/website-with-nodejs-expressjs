@@ -26,7 +26,7 @@ module.exports = (params) => {
       pageTitle: 'Welcome',
       template: 'index',
       topSpeakers,
-      allartwork: allartwork,
+      allartwork,
     });
   });
 

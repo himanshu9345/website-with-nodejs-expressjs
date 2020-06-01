@@ -18,12 +18,27 @@ module.exports = (params) => {
     // request.session.visitcount += 1;
     // console.log(`Number of visits: ${request.session.visitcount}`);
     const speakers = await speakersService.getList();
-    response.render('layout', { pageTitle: 'Speakers', template: 'speakers', speakers });
+    const allartwork = await speakersService.getAllArtwork();
+
+    response.render('layout', {
+      pageTitle: 'Speakers',
+      template: 'speakers',
+      speakers,
+      allartwork: allartwork,
+    });
   });
 
   router.get('/:shortname', async (request, response) => {
     const speaker = await speakersService.getSpeaker(request.params.shortname);
-    response.render('layout', { pageTitle: 'Speakers', template: 'speakers-detail', speaker });
+    const speaker_all_artwork = await speakersService.getArtworkForSpeaker(
+      request.params.shortname
+    );
+    response.render('layout', {
+      pageTitle: 'Speakers',
+      template: 'speakers-detail',
+      speaker,
+      allartwork: speaker_all_artwork,
+    });
   });
   return router;
 };
