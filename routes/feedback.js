@@ -5,13 +5,18 @@ const router = express.Router();
 
 module.exports = (params) => {
   const { feedbackService } = params;
-  router.get('/', async (request, response) => {
-    // await will wait till promise returns, so fn is async
-    const feedback = await feedbackService.getList();
-    return response.json(feedback);
+  router.get('/', async (request, response, next) => {
+    try {
+      // await will wait till promise returns, so fn is async
+      const feedback = await feedbackService.getList();
+      return response.json(feedback);
+    } catch (error) {
+      return next(error);
+    }
   });
-  router.get('/:jobid', (request, response) => {
-    response.send(`Detail page of ${request.params.jobid}`);
+
+  router.post('/', (request, response) => {
+    response.send('Feedback posted');
   });
   return router;
 };
