@@ -20,7 +20,14 @@ module.exports = (params) => {
     // request.session.visitcount += 1;
     // console.log(`Number of visits: ${request.session.visitcount}`);
     const topSpeakers = await speakersService.getList();
-    response.render('layout', { pageTitle: 'Welcome', template: 'index', topSpeakers });
+    const allartwork = await speakersService.getAllArtwork();
+    // console.log(allartwork);
+    response.render('layout', {
+      pageTitle: 'Welcome',
+      template: 'index',
+      topSpeakers,
+      allartwork: allartwork,
+    });
   });
 
   router.use('/speakers', speakersRoute(params));
