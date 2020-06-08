@@ -3,6 +3,8 @@ const path = require('path');
 const cookieSession = require('cookie-session');
 const createError = require('http-errors');
 
+const bodyParser = require('body-parser');
+
 const FeedbackService = require('./services/FeedbackService');
 const SpeakersService = require('./services/SpeakerService');
 // Services intialized by passsing data source
@@ -22,6 +24,12 @@ app.use(
   cookieSession({
     name: 'session',
     keys: ['32452352hjskfnbdhfwrui45', 'dsfst4ew4442dfhwejkr'],
+  })
+);
+
+app.use(
+  bodyParser.urlencoded({
+    extended: true,
   })
 );
 
