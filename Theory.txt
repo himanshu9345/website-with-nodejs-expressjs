@@ -11,3 +11,6 @@ If any path matches the that middleware get exexuted.
 HTTP is stateless protocol,
 to persist user data from request to request we need sessions.
 Cookie session is used to maintain session in this node application.
+
+REST request gives a json result(data), http request gives htmlpage.
+XHR/AJAX used to receive data and send data to backend.
